@@ -6,7 +6,7 @@
         <groupId>com.massivecraft.massivesuper</groupId>
         <artifactId>MassiveSuper</artifactId>
         <version>3.3.0</version>
-        <relativePath>../MassiveSuper</relativePath>
+        <relativePath>./MassiveSuper</relativePath>
     </parent>
 
     <!-- Basics -->

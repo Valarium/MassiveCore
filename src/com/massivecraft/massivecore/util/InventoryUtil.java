@@ -10,26 +10,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryAction;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
-import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.inventory.InventoryType.SlotType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
-import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.MaterialData;
 
 import java.util.AbstractMap.SimpleEntry;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
@@ -897,11 +888,42 @@ public class InventoryUtil
 		// Check Null
 		if (isNothing(itemStack)) return;
 
-		ItemMeta meta = getMeta(itemStack);
-		if (meta == null) return;
+		// Check Repairable
+		Material material = itemStack.getType();
+		if ( ! isRepairable(material)) return;
 
-		if (!(meta instanceof Damageable)) return;
-		Damageable damageable = (Damageable) meta;
+		// Repair
+		itemStack.setDurability((short) 0);
+	}
+
+	public static boolean isRepairable(Material material)
+	{
+		// Blocks are never repairable.
+		// Only items take damage in Minecraft.
+		if (material.isBlock()) return false;
+
+		// This list was created by checking for the "B" notation on:
+		// http://minecraft.gamepedia.com/Data_values
+		if (material == Material.COAL) return false;
+		if (material == Material.GOLDEN_APPLE) return false;
+		if (material == Material.RAW_FISH) return false;
+		if (material == Material.COOKED_FISH) return false;
+		if (material == Material.INK_SACK) return false;
+		if (material == Material.MAP) return false;
+		if (material == Material.POTION) return false;
+		if (material == Material.MONSTER_EGG) return false;
+		if (material == Material.SKULL_ITEM) return false;
+
+		// This lines actually catches most of the specific lines above.
+		// However we add this in anyways for future compatibility.
+		if ( ! material.getData().equals(MaterialData.class)) return false;
+
+		// We may also not repair things that can not take any damage.
+		// NOTE: MaxDurability should be renamed to MaxDamage.
+		if (material.getMaxDurability() == 0) return false;
+
+		// Otherwise repairable
+		return true;
 	}
 	
 	public static boolean isPotion(ItemStack itemStack)

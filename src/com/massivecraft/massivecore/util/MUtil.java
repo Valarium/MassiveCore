@@ -1013,28 +1013,22 @@ public class MUtil
 	// FOOD
 	
 	public final static Set<Material> FOOD_MATERIALS = new HashSet<>(MUtil.list(
-		Material.APPLE,
-		Material.BREAD,
-		Material.COOKED_BEEF,
-		Material.COOKED_CHICKEN,
-		Material.COOKED_COD,
-		Material.COOKED_MUTTON,
-		Material.COOKED_PORKCHOP,
-		Material.COOKED_RABBIT,
-		Material.COOKED_SALMON,
-		Material.COOKIE,
-		Material.GOLDEN_APPLE,
-		Material.MELON,
-		Material.MUSHROOM_STEW,
-		Material.PORKCHOP,
-		Material.BEEF,
-		Material.CHICKEN,
-		Material.COD,
-		Material.SALMON,
-		Material.PUFFERFISH,
-		Material.TROPICAL_FISH,
-		Material.ROTTEN_FLESH,
-		Material.SPIDER_EYE
+			Material.APPLE,
+			Material.BREAD,
+			Material.COOKED_BEEF,
+			Material.COOKED_CHICKEN,
+			Material.COOKED_FISH,
+			Material.COOKIE,
+			Material.GRILLED_PORK,
+			Material.GOLDEN_APPLE,
+			Material.MELON,
+			Material.MUSHROOM_SOUP,
+			Material.PORK,
+			Material.RAW_BEEF,
+			Material.RAW_CHICKEN,
+			Material.RAW_FISH,
+			Material.ROTTEN_FLESH,
+			Material.SPIDER_EYE
 	));
 	
 	// Archery
@@ -1059,10 +1053,10 @@ public class MUtil
 	// Sword
 	
 	public static Set<Material> SWORD_MATERIALS = EnumSet.of(
-		Material.WOODEN_SWORD,
+		Material.WOOD_SWORD,
 		Material.STONE_SWORD,
 		Material.IRON_SWORD,
-		Material.GOLDEN_SWORD,
+		Material.GOLD_SWORD,
 		Material.DIAMOND_SWORD
 	);
 	
@@ -1099,10 +1093,10 @@ public class MUtil
 	// Axe
 	
 	public static Set<Material> AXE_MATERIALS = EnumSet.of(
-		Material.WOODEN_AXE,
+		Material.WOOD_AXE,
 		Material.STONE_AXE,
 		Material.IRON_AXE,
-		Material.GOLDEN_AXE,
+		Material.GOLD_AXE,
 		Material.DIAMOND_AXE
 	);
 	
@@ -1171,10 +1165,10 @@ public class MUtil
 	// Pickaxe
 	
 	public static Set<Material> PICKAXE_MATERIALS = EnumSet.of(
-		Material.WOODEN_PICKAXE,
+		Material.WOOD_PICKAXE,
 		Material.STONE_PICKAXE,
 		Material.IRON_PICKAXE,
-		Material.GOLDEN_PICKAXE,
+		Material.GOLD_PICKAXE,
 		Material.DIAMOND_PICKAXE
 	);
 		
@@ -1205,11 +1199,11 @@ public class MUtil
 	// Spade
 	
 	public static Set<Material> SPADE_MATERIALS = EnumSet.of(
-		Material.WOODEN_SHOVEL,
-		Material.IRON_SHOVEL,
-		Material.IRON_SHOVEL,
-		Material.GOLDEN_SHOVEL,
-		Material.DIAMOND_SHOVEL
+			Material.WOOD_SPADE,
+			Material.STONE_SPADE,
+			Material.IRON_SPADE,
+			Material.GOLD_SPADE,
+			Material.DIAMOND_SPADE
 	);
 			
 	public static boolean isSpade(Material material)

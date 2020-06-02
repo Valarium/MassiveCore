@@ -2,6 +2,8 @@ package com.massivecraft.massivecore.command.type;
 
 import com.massivecraft.massivecore.collections.MassiveList;
 import com.massivecraft.massivecore.collections.MassiveMap;
+import com.massivecraft.massivecore.collections.MassiveSet;
+import com.massivecraft.massivecore.util.Txt;
 import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 
@@ -68,10 +70,14 @@ public class TypeEnchantment extends TypeAbstractChoice<Enchantment>
 	// OVERRIDE
 	// -------------------------------------------- //
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public String getNameInner(Enchantment enchantment)
 	{
-		return enchantment.getKey().getNamespace();
+		String rawname = enchantment.getName();
+		List<String> rawnames = ID_TO_RAWNAMES.get(enchantment.getId());
+		if (rawnames != null) rawname = rawnames.get(0);
+		return Txt.getNicedEnumString(rawname);
 	}
 
 	// TODO: this needs to be changed, so all the expected names work
@@ -96,10 +102,11 @@ public class TypeEnchantment extends TypeAbstractChoice<Enchantment>
 		return ret;
 	}*/
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public String getIdInner(Enchantment enchantment)
 	{
-		return enchantment.getKey().toString();
+		return String.valueOf(enchantment.getId());
 	}
 
 }
